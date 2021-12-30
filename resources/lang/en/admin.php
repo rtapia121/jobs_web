@@ -23,10 +23,32 @@ return [
             'activated' => 'Activated',
             'forbidden' => 'Forbidden',
             'language' => 'Language',
-                
+
             //Belongs to many relations
             'roles' => 'Roles',
-                
+
+        ],
+    ],
+
+    'vacant' => [
+        'title' => 'Vacants',
+
+        'actions' => [
+            'index' => 'Vacants',
+            'create' => 'New Vacant',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'title' => 'Title',
+            'description' => 'Description',
+            'hiringOrganization' => 'Hiring Organization',
+            'jobLocation' => 'Job Location',
+            'validThrough' => 'Valid Through',
+            'datePosted' => 'Date Posted',
+            'optionalFilds' => 'Optional Filds',
+
         ],
     ],
 

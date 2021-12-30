@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return  redirect('/admin/login');
+    return  redirect('/admin/login'); //view('welcome')->with(["message"=> "holis", "list"=> [1,2,3]]);
 });
 
 Route::get('/dashboard', function () {
@@ -47,5 +47,21 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
         Route::post('/profile',                                     'ProfileController@updateProfile')->name('update-profile');
         Route::get('/password',                                     'ProfileController@editPassword')->name('edit-password');
         Route::post('/password',                                    'ProfileController@updatePassword')->name('update-password');
+    });
+});
+
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('vacants')->name('vacants/')->group(static function() {
+            Route::get('/',                                             'VacantsController@index')->name('index');
+            Route::get('/create',                                       'VacantsController@create')->name('create');
+            Route::post('/',                                            'VacantsController@store')->name('store');
+            Route::get('/{vacant}/edit',                                'VacantsController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'VacantsController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{vacant}',                                    'VacantsController@update')->name('update');
+            Route::delete('/{vacant}',                                  'VacantsController@destroy')->name('destroy');
+        });
     });
 });
